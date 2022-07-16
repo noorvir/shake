@@ -1,0 +1,10 @@
+{
+  "backend": "shell",
+  "commands": [
+    {
+      "name": "echo",
+      "usage": "echo <message>",
+      "numArgs": 1
+    }
+  ]
+}
