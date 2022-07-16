@@ -1,4 +1,4 @@
-package shake
+package main
 
 import (
 	"os"

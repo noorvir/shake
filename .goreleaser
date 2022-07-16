@@ -1,0 +1,32 @@
+project_name: shake
+
+before:
+  hooks:
+    - go mod download
+    - go mod tidy
+
+builds:
+  - binary: unweave
+    goos:
+      - linux
+      - windows
+      - darwin
+    env:
+      - CGO_ENABLED=0
+    ldflags:
+      -w -s -X github.com/noorvir/shake/constants.Version={{.Version}}
+
+brews:
+  - tap:
+      owner: shake
+      name: homebrew-shake
+    commit_author:
+      name: goreleaserbot
+      email: noorvir.aulakh@gmail.com
+
+    homepage: "https://github.com/noorvir/shake"
+    description: "Typed shell scripts. Shell + Make = Shake."
+    test: |
+      system "#{bin}/shake"
+    install: |
+      bin.install "shake"
